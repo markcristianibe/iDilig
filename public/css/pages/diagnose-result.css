@@ -1,0 +1,32 @@
+#header{
+    background-color: #fff;
+    padding: 20px;
+    font-family: 'Lexend', sans-serif;
+}
+#image{
+    height: 200px;
+    border: 2px solid #555;
+    border-radius: 20px;
+}
+#body{
+    padding: 20px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    margin-top: -100px;
+    font-family: 'Lexend', sans-serif;
+    border: 1px solid #000;
+    border-bottom: none;
+}
+#txt_plant_health{
+    font-weight: bold;
+    font-size: xx-large;
+    text-shadow: 0 0 3px #fff, 0 0 3px #fff;
+}
+#disease_container{
+    box-shadow: 1px 1px 1px #b8b8b8;
+    padding: 10px 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    color: #555;
+}

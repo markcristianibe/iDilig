@@ -1,0 +1,33 @@
+
+#header{
+    padding: 20px;
+}
+h2{
+    font-family: 'Lexend', sans-serif;
+}
+#auto_diagnose_container{
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+#btn_diagnose_plant{
+    background-color: 	#274e13;
+    color: #fff;
+    padding: 15px 50px;
+    border-radius: 30px;
+    text-align: center;
+}
+
+#content{
+    padding: 20px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    margin-top: -40px;
+    font-family: 'Lexend', sans-serif;
+}
+.plant-disease-container{
+    height: 90px;
+    border-radius: 20px;
+    background: #555;
+    padding-top: 35px;
+}

@@ -1,0 +1,63 @@
+#header{
+    padding: 20px;
+}
+#txt_searchbar{
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+}
+#weather_container{
+    padding: 15px;
+    border-radius: 20px 15px;
+    font-family: 'Lexend', sans-serif;
+}
+#icon{
+    margin: 10px;
+    float: right;
+}
+#txt_temperature{
+    font-family: 'Lexend', sans-serif;
+    color: #484848;
+    font-size: 42px;
+    font-weight: 500;
+    margin: 10px 25px;
+}
+.weather-param-container{
+    padding: 4px 7px;
+    border-radius: 15px;
+}
+.weather-param-container small{
+    margin: 3px;
+    color: #fff;
+    font-size: x-small;
+}
+
+#body{
+    padding: 20px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    margin-top: -50px;
+    font-family: 'Lexend', sans-serif;
+}
+#reminder_container{
+    border: 1px solid #b8b8b8;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1px #b8b8b8;
+}
+#calendar_container{
+    padding: 5px;
+    border: 1px solid #b8b8b8;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1px #b8b8b8;
+    text-align: center
+}
+#txt_date{
+    font-size: 50px;
+    color: #484848;
+    margin-right: 5px;
+}
+#btn_addDevice{
+    padding: 10px 25px;
+    border-radius: 50px
+}

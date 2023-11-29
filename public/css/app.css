@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@500&family=Lexend:wght@100;200;300;400;500;600&display=swap');
+
+/* width */
+::-webkit-scrollbar {
+    width: 2px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: #d9ead3; 
+}
+   
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #38761d; 
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #274e13; 
+}
+
+  
+body{
+    background-color: #e2ecdf;
+}
+.bg-m_green_dark{
+    background-color: #274e13;
+}
+.text-m_green_dark{
+    color: #274e13;
+}
+
+.bg-m_green_primary{
+    background-color: #38761d;
+}
+.text-m_green_primary{
+    color: #38761d;
+}
+
+.bg-m_green_secondary{
+    background-color: #6aa84f;
+}
+.text-m_green_secondary{
+    color: #6aa84f;
+}
+
+.bg-m_green_tertiary{
+    background-color: #93c47d;
+}
+.text-m_green_tertiary{
+    color: #93c47d;
+}
+
+.bg-m_green_light{
+    background-color: #e2ecdf;
+}
+.text-m_green_light{
+    color: #e2ecdf;
+}
+
+.text-gray555{
+    color: #555;
+}

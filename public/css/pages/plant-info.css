@@ -1,0 +1,43 @@
+#btn_back{
+    color: #555;
+    border-radius: 50%;
+    border: none;
+    padding-top: 5px;
+    width: 35px;
+    height: 35px;
+    position: fixed;
+    top: 50px;
+    left: 10px;
+    box-shadow: 1px 1px 1px #000;
+}
+#body{
+    padding: 20px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    margin-top: -50px;
+    font-family: 'Lexend', sans-serif;
+    z-index: 999;
+}
+#collapseFloralLanguage{
+    max-height: 100px;
+    color: #555;
+    overflow-y: auto;
+    border-radius: 10px;
+    border: 1px solid #555;
+}
+.maintenance-container{
+    padding: 10px 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1px #b8b8b8;
+}
+.maintenance-icon{
+    width: 50px;
+    border-right: 2px solid #000;
+}
+#btn_add_to_my_plants{
+    padding: 15px 30px;
+    border-radius: 30px;
+    background-color: #38761d;
+    color: #fff;
+}

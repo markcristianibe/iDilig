@@ -1,0 +1,59 @@
+body{
+    background-color: #fff;
+}
+#logo_container{
+    position: relative;
+    z-index: -1;
+}
+#login_label_bg{
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    height: 100px;
+    margin-top: -50px;
+}
+#login_bg{
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    padding: 30px 20px;
+    margin-top: -60px;
+    padding-left: 30px;
+    padding-right: 30px;
+    z-index: 9;
+}
+#login_links{
+    border-radius: 50%;
+    border: 1px solid gray;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+}
+.login-textbox{
+    font-size: large;
+    border: 2px solid #bfbfbf;
+    border-radius: 10px;
+    padding: 12px;
+    color: #555;
+}
+.login-textbox:active{
+    border: 2px solid #6aa84f;
+    color: #000
+}
+#label_forgot_password{
+    text-align: center;
+    text-decoration: none;
+    color: #19C271;
+}
+#btn_login{
+    width: 100%;
+    background-color: #19C271;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: x-large;
+    font-weight: bold;
+    padding: 12px;
+}
+#signup{
+    text-decoration: none;
+    color: #19C271;
+}
