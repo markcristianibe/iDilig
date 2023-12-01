@@ -1,0 +1,43 @@
+#header{
+    padding: 20px;
+}
+h2{
+    font-family: 'Lexend', sans-serif;
+}
+#body{
+    padding: 20px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    margin-top: -50px;
+    font-family: 'Lexend', sans-serif;
+}
+#txt_searchbar{
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+}
+#my_plant_container{
+    background-color: #fff;
+    border: 1px solid #b8b8b8;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1px #b8b8b8;
+}
+#plant_avatar{
+    width: 100%;
+    border-radius: 50%;
+    border: 2px solid 	#555;
+}
+.maintenance-img{
+    width: 20px;
+}
+.param_val{
+    font-size: small;
+}
+.plant-date{
+    text-align: right;
+    font-weight: light;
+    font-size: small;
+    margin: 0;
+    color: #555;
+}

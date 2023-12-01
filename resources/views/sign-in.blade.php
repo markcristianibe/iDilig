@@ -37,10 +37,19 @@
             <small class="text-gray555">or use your email account</small>
         </div>
     </center>
-    <form action="" method="post">
+
+    @if($errors->any())
+        @foreach($errors->all() as $error)
+            <div class="alert alert-danger p-2">
+                {{ $error }}
+            </div>
+        @endforeach
+    @endif
+
+    <form action="/login" method="post">
         @csrf
-        <input id="txt_email" type="email" class="form-control login-textbox mb-3" placeholder="Email" required>
-        <input id="txt_password" type="password" class="form-control login-textbox mb-3" placeholder="Password" required>
+        <input name="email" id="txt_email" type="email" class="form-control login-textbox mb-3" placeholder="Email" required autocomplete="off">
+        <input name="password" id="txt_password" type="password" class="form-control login-textbox mb-3" placeholder="Password" required autocomplete="off">
         <a href="#" id="label_forgot_password">
             <p><small><b>Forgot Password?</b></small></p>
         </a>

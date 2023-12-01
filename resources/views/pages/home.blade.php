@@ -55,14 +55,14 @@
             <div class="col-5">
                 <div id="calendar_container" class="container pb-3">
                     <b id="txt_day" class="text-danger">
-                        <?php echo date("l"); ?>
+                        {{ date("l") }}
                     </b>
                     <div class="row">
                         <div class="col-7">
-                            <p class="text-start"><small id="txt_month"><?php echo date("F"); ?></small></p>
+                            <p class="text-start"><small id="txt_month">{{ date("F") }}</small></p>
                         </div>
                     </div>
-                    <h3 style="margin-top: -20px; text-align: right"><b id="txt_date"><?php echo date("d"); ?></b></h3>
+                    <h3 style="margin-top: -20px; text-align: right"><b id="txt_date">{{ date("d") }}</b></h3>
                 </div>
             </div>
         </div>

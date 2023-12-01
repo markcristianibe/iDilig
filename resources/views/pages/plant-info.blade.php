@@ -5,6 +5,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/plant-info.css') }}">
 @endsection
 
+<script>
+    var plant_id = '{{ $plant_info["pid"] }}';
+    var plant_label = '{{ $plant_info["common_name"] }}'
+</script>
+
 <script src="{{ asset('js/pages/scan.js') }}"></script>
 
 @isset($plant_info['image'])

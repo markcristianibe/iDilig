@@ -72,5 +72,23 @@ $(document).ready(function () {
         
         $("#body").html(spinner);
         window.location.href=`/scan/scan-result/${trefle_api_key}/${plant_name}`;
-    });
+    })
+
+    $("#btn_add_to_my_plants").click(function () {
+        if(plant_id != ''){
+            $.ajax({
+                method: 'get',
+                url: '/users/plants/add-plant',
+                data: {
+                    plant: plant_id,
+                    label: plant_label
+                },
+                datatype: 'text',
+                success: function(){
+                    alert('Plant Added to My Plants');
+                    window.location.href = "/my-plants";
+                }
+            })
+        }
+    })
 });
