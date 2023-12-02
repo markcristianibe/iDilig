@@ -16,6 +16,6 @@
     @elseif($page == 'my-plants')
         @include('pages.my-plants')
     @elseif($page == 'account')
-        
+        @include('pages.my-account')
     @endif
 @endsection

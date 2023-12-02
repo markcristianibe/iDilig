@@ -1,0 +1,41 @@
+#header{
+    padding: 20px;
+}
+h2{
+    font-family: 'Lexend', sans-serif;
+}
+#body{
+    padding: 20px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    margin-top: -50px;
+    font-family: 'Lexend', sans-serif;
+}
+.user-avatar{
+    width: 96px;
+    border-radius: 50%;
+    border: 3px solid #555;
+}
+#edit_btn{
+    text-decoration: none;
+}
+.social-icon{
+    border-radius: 50%;
+    border: 1px solid #555;
+    width: 100%;
+}
+.social-txt{
+    margin-top: 10px;
+    color: #555
+}
+.setting-item{
+    text-decoration: none;
+    color: #555;
+    padding-top: 20px;
+}
+#logout_btn{
+    width: 100%;
+    padding: 15px;
+    border-radius: 30px;
+    border: 1px solid #555;
+}
