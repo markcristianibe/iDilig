@@ -23,7 +23,7 @@
         @endphp
 
         <div id="my_plant_container" class="container my-3">
-            <div class="row">
+            <div id="{{ $plant['plant_id'] }}" class="row my-plant-row">
                 <div class="col-3">
                     <img class="my-3 mx-2" id="plant_avatar" src="{{ $plant_info['image'] }}" alt="">
                 </div>

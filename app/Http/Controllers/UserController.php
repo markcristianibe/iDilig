@@ -46,4 +46,9 @@ class UserController extends Controller
         
         return view('pages.templates.my-plants.search', ['data' => $data]);
     }
+
+    public function get_user_plant_info(Request $request){
+        // return $request->id; 
+        return view('main', ['page' => 'user-plant']);
+    }
 }

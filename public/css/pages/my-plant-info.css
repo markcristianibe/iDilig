@@ -1,0 +1,76 @@
+#btn_back{
+    color: #555;
+    border-radius: 50%;
+    border: none;
+    padding-top: 5px;
+    width: 35px;
+    height: 35px;
+    position: fixed;
+    top: 50px;
+    left: 10px;
+    box-shadow: 1px 1px 1px #000;
+}
+.plant-img{
+    width: 100px;
+    border-radius: 50%;
+}
+.header-container{
+    margin-top: -50px;
+    padding-top: 60px;
+    width: 90%;
+    background-color: aliceblue;
+    border-radius: 20px;
+    border: 1px solid #b8b8b8;
+    box-shadow: 1px 1px 1px #b8b8b8;
+}
+.header-container h3{
+    color: #274e13;
+}
+.header-container h3 a{
+    text-decoration: none;
+}
+.header-container hr{
+    margin-top: -5px;
+}
+#txt_category{
+    margin-top: -5px;
+    font-size: large;
+    color: #555;
+}
+#txt_date{
+    margin-top: -10px;
+    color: #555;
+}
+
+#body{
+    padding: 20px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    margin-top: -50px;
+    font-family: 'Lexend', sans-serif;
+}
+.tile-container{
+    background: #d9ead3;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+.tile{
+    width: 100%;
+    border: 3px solid #000;
+    border-radius: 20px;
+    padding: 10px;
+}
+.tile small{
+    text-shadow: -1px 1px 0 #000, 
+                1px 1px 0 #000, 
+                1px -1px 0 #000, 
+                -1px -1px 0 #000; 
+}
+.tile-img{
+    width: 100%;
+}
+#btn_remove_plant{
+    width: 100%;
+    padding: 15px;
+    border-radius: 20px;
+}

@@ -39,3 +39,5 @@ Route::get('/scan/scan-result/{apiKey}/{q}', [PlantInformationController::class,
 Route::get('/users/plants/add-plant', [UserController::class, 'add_user_plant']);
 
 Route::get('/my-plants/search', [UserController::class, 'search_user_plant']);
+
+Route::get('/user/plants/{id}', [UserController::class, 'get_user_plant_info']);

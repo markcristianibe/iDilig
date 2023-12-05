@@ -15,6 +15,8 @@
         @include('pages.plant-info')
     @elseif($page == 'my-plants')
         @include('pages.my-plants')
+    @elseif($page == 'user-plant')
+        @include('pages.templates.my-plants.my-plant-info')
     @elseif($page == 'account')
         @include('pages.my-account')
     @endif

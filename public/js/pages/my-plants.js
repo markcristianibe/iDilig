@@ -25,4 +25,8 @@ $(document).ready(function(){
             }
         })
     });
+
+    $(".my-plant-row").click(function(){
+        window.location.href = "/user/plants/" + this.id;
+    })
 })
