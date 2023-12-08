@@ -1,7 +1,18 @@
+@section('pageTitle'){{ ucwords($data[0]->label) }} @endsection
+
 @section('headers')
     @parent
     <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/my-plant-info.css') }}">
 @endsection
+
+@php
+    $jsonString = file_get_contents('plant-database-master/json/' . $data[0]->plant_name . '.json');
+    $plant_info = json_decode($jsonString, true);
+@endphp
+
+<script>
+    var plant_id = {{ $data[0]->plant_id }};
+</script>
 
 <script src="{{ asset('js/pages/my-plants.js') }}"></script>
 
@@ -11,13 +22,13 @@
 
 <div class="header mt-5 ">
     <center>
-        <img src="{{ asset('img/PLANTS_icon_bg.jpg') }}" alt="" class="plant-img">
+        <img src="{{ $plant_info['image'] }}" alt="" class="plant-img">
     </center>
     <div class="header-container container">
-        <h3 class="text-center">Helianthus Anuus <a href="">🖊️</a></h3>
+        <h3 class="text-center">{{ ucwords($data[0]->label) }} <a href="">🖊️</a></h3>
         <hr>
-        <p id="txt_category" class="text-center"><i>"Compositae, Helianthus"</i></p>
-        <p id="txt_date" class="text-center"><small><i>Plant added at September 28, 2023</i></small></p>
+        <p id="txt_category" class="text-center"><i>"{{ ucwords($plant_info['basic']['category']) }}"</i></p>
+        <p id="txt_date" class="text-center"><small><i>Plant added at {{ date_format($data[0]->created_at, "F d, Y") }}</i></small></p>
     </div>
 </div>
 
@@ -28,9 +39,9 @@
         <div class="row">
             <div class="col">
                 <p class="mx-3">
-                    <b>Origin: </b><i>North America</i><br>
-                    <b>Species: </b><i>Helianthus Annuus</i><br>
-                    <b>Colors: </b><i>yellow, red, orange</i>
+                    <b>Origin: </b><i>{{ $plant_info['basic']['origin'] }}</i><br>
+                    <b>Species: </b><i>{{ $plant_info['display_pid'] }}</i><br>
+                    <b>Colors: </b><i>{{ $plant_info['basic']['color'] }}</i>
                 </p>
             </div>
             <div class="col-3">
@@ -38,64 +49,69 @@
             </div>
         </div>
     </div>
-    <div id="plant_controls" class="tile-container container mt-3">
-        <h4 class="text-m_green_dark mt-2">Plant Monitoring & Controls</h4>
-        <hr>
-        <div class="row">
-            <div class="col-4">
-                <div class="tile container" style="background: #ffdd85">
-                    <center>
-                        <img src="{{ asset('img/plants/icons/sun.png') }}" alt="" class="tile-img">
-                        <small class="text-light"><b>100,000 lux</b></small>
-                    </center>
+
+    @if(count($device) != 0)
+        <div id="plant_controls" class="tile-container container mt-3">
+            <img src="@if($device[0]->status == "active") {{ asset('img/plants/icons/active.png') }} @else {{ asset('img/plants/icons/inactive.png') }} @endif" width="10px" style="float: right; margin-top: 13px" alt="">
+            <h4 class="text-m_green_dark mt-2">Plant Monitoring & Controls</h4>
+            
+            <hr>
+            <div class="row">
+                <div class="col-4">
+                    <div class="tile container" style="background: #ffdd85">
+                        <center>
+                            <img src="{{ asset('img/plants/icons/sun.png') }}" alt="" class="tile-img">
+                            <small class="text-light"><b>{{ $device[0]->light_intensity }} lx</b></small>
+                        </center>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="tile container" style="background: #87D1FB">
+                        <center>
+                            <img src="{{ asset('img/plants/icons/water lvl.png') }}" alt="" class="tile-img">
+                            <small class="text-light"><b>{{ $device[0]->water_level_1 }}%</b></small>
+                        </center>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="tile container" style="background: #FB8762">
+                        <center>
+                            <img src="{{ asset('img/icons/Maintenance/icons8-temperature-96.png') }}" alt="" class="tile-img">
+                            <small class="text-light"><b>{{ $device[0]->temperature }}%</b></small>
+                        </center>
+                    </div>
                 </div>
             </div>
-            <div class="col-4">
-                <div class="tile container" style="background: #87D1FB">
-                    <center>
-                        <img src="{{ asset('img/plants/icons/water lvl.png') }}" alt="" class="tile-img">
-                        <small class="text-light"><b>85%</b></small>
-                    </center>
+            <div class="row mt-2">
+                <div class="col-4">
+                    <div class="tile container" style="background: #B0F4F0">
+                        <center>
+                            <img src="{{ asset('img/plants/icons/humidity.png') }}" alt="" class="tile-img">
+                            <small class="text-light"><b>{{ $device[0]->humidity }}%</b></small>
+                        </center>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="tile container" style="background: #AC7A4C">
+                        <center>
+                            <img src="{{ asset('img/plants/icons/soil moisture.png') }}" alt="" class="tile-img">
+                            <small class="text-light"><b>{{ $device[0]->soil_moisture }}%</b></small>
+                        </center>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="tile container" style="background: #50E95F">
+                        <center>
+                            <img src="{{ asset('img/plants/icons/fert.png') }}" alt="" class="tile-img">
+                            <small class="text-light"><b>{{ $device[0]->water_level_2 }}%</b></small>
+                        </center>
+                    </div>
                 </div>
             </div>
-            <div class="col-4">
-                <div class="tile container" style="background: #FB8762">
-                    <center>
-                        <img src="{{ asset('img/icons/Maintenance/icons8-temperature-96.png') }}" alt="" class="tile-img">
-                        <small class="text-light"><b>70%</b></small>
-                    </center>
-                </div>
-            </div>
+            <br>
+            <i>👆🏾 Tap here for more info</i>
         </div>
-        <div class="row mt-2">
-            <div class="col-4">
-                <div class="tile container" style="background: #B0F4F0">
-                    <center>
-                        <img src="{{ asset('img/plants/icons/humidity.png') }}" alt="" class="tile-img">
-                        <small class="text-light"><b>35%</b></small>
-                    </center>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="tile container" style="background: #AC7A4C">
-                    <center>
-                        <img src="{{ asset('img/plants/icons/soil moisture.png') }}" alt="" class="tile-img">
-                        <small class="text-light"><b>30%</b></small>
-                    </center>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="tile container" style="background: #50E95F">
-                    <center>
-                        <img src="{{ asset('img/plants/icons/fert.png') }}" alt="" class="tile-img">
-                        <small class="text-light"><b>70%</b></small>
-                    </center>
-                </div>
-            </div>
-        </div>
-        <br>
-        <i>👆🏾 Tap here for more info</i>
-    </div>
+    @endif
 
     <div id="plant_activities" class="tile-container container mt-3">
         <h4 class="text-m_green_dark mt-2">Activities & Notifications</h4>
@@ -131,27 +147,32 @@
     <div id="device_option" class="tile-container container mt-3">
         <h4 class="text-m_green_dark mt-2">Device Options</h4>
         <hr>
-        <div class="row mb-2">
-            <div class="col-3">
-                <div class="tile container" style="background: #ACFF85">
-                    <center>
-                        <img src="{{ asset('img/plants/icons/paired.png') }}" alt="" class="tile-img">
-                    </center>
+        @if(count($device) != 0)
+            <div class="row mb-2">
+                <div class="col-3">
+                    <div class="tile container" style="background: #ACFF85">
+                        <center>
+                            <img src="{{ asset('img/plants/icons/plant_paired.png') }}" alt="" class="tile-img">
+                        </center>
+                    </div>
+                </div>
+                <div class="col">
+                    <h5 class="mt-3">{{$device[0]->serial_no}}</h5>
+                </div>
+                <div class="col-3">
+                    <div class="tile container" style="background: #FF4E27">
+                        <center>
+                            <img src="{{ asset('img/plants/icons/trash.png') }}" alt="" class="tile-img">
+                        </center>
+                    </div>
                 </div>
             </div>
-            <div class="col">
-            </div>
-            <div class="col-3">
-                <div class="tile container" style="background: #FF4E27">
-                    <center>
-                        <img src="{{ asset('img/plants/icons/trash.png') }}" alt="" class="tile-img">
-                    </center>
-                </div>
-            </div>
-        </div>
+        @else
+            <h5 class="text-center p-3">No Paired Device</h5>
+        @endif
     </div>
 
-    <button id="btn_remove_plant" class="btn btn-danger btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#remove_plant_modal">Remove from my Plants</button>
+    <button id="btn-remove-plant" class="btn btn-danger btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#remove_plant_modal">Remove from my Plants</button>
 </div>
 
 @include('modals.remove-plant-modal')

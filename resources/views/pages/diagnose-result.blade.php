@@ -8,7 +8,7 @@
 <div id="header" class="container mb-5">
     <div class="row mt-5">
         <div class="col-2">
-        <button class="btn" onclick="window.location.reload()"><i class="material-icons">arrow_back</i></button>
+            <button class="btn" onclick="window.location.reload()"><i class="material-icons">arrow_back</i></button>
         </div>
         <div class="col">
             <h4 class="text-center text-m_green_primary mt-1"><b>Diagnosis Result</b></h4>

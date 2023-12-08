@@ -19,16 +19,28 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     if(auth()->user() != ''){
-        return view('main', ['page' => 'home']);
+        return redirect('/home');
     } else{
         return view('sign-in');
     }
 });
 
 Route::post('/login', [UserController::class, 'login']);
+
 Route::get('/user/logout', [UserController::class, 'logout']);
 
 Route::get('/{page}', [AppController::class, 'index']);
+
+Route::get('/user/device-scan', function(){
+    if(auth()->user() != ''){
+        return view('pages.templates.qr-code-scanner.scan-device');
+    }
+    else{
+        return redirect('/');
+    }
+});
+
+Route::get('/user/register-device', [UserController::class, 'register_user_device']);
 
 Route::get('/diagnose/diagnose-result', [PlantDiagnosisController::class, 'index']);
 
@@ -41,3 +53,7 @@ Route::get('/users/plants/add-plant', [UserController::class, 'add_user_plant'])
 Route::get('/my-plants/search', [UserController::class, 'search_user_plant']);
 
 Route::get('/user/plants/{id}', [UserController::class, 'get_user_plant_info']);
+
+Route::get('/user/plant/monitoring', [UserController::class, 'get_device_params']);
+
+Route::get('/user/plants/remove/{id}', [UserController::class, 'remove_user_plant']);

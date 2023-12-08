@@ -57,6 +57,14 @@
     color: #484848;
     margin-right: 5px;
 }
+.device-container{
+    border: 1px solid #b8b8b8;
+    background-color: #fff;
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1px #b8b8b8;
+}
 #btn_addDevice{
     padding: 10px 25px;
     border-radius: 50px

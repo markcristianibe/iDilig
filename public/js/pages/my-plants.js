@@ -29,4 +29,22 @@ $(document).ready(function(){
     $(".my-plant-row").click(function(){
         window.location.href = "/user/plants/" + this.id;
     })
+
+    $("#plant_controls").click(function () { 
+        $.ajax({
+            url: '/user/plant/monitoring',
+            method: 'get',
+            data: {
+                plant_id: plant_id
+            },
+            datatype: 'text',
+            success: function(data){
+                $("#body").html(data);
+            }
+        })
+    })
+
+    $("#btn_remove_plant").click(function(){
+        window.location.href = '/user/plants/remove/' + plant_id;
+    })
 })

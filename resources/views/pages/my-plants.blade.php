@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-9">
                     <small>
-                        <h3>{{ $plant['label'] }}</h3>
+                        <h3>{{ ucwords($plant['label']) }}</h3>
                         <i>"{{ $plant_info['basic']['category'] }}"</i>
                     </small>
                     <div class="row">

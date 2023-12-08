@@ -1,0 +1,35 @@
+body{
+    background-color: 	#6aa84f !important;
+}
+#header{
+    padding: 20px;
+}
+h1, h5{
+    font-family: 'Lexend', sans-serif;
+}
+#body{
+    padding: 20px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    margin-top: -50px;
+    font-family: 'Lexend', sans-serif;
+}
+#reader{
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+    background-color: #1a1a1a;
+}
+#reader video{
+    width: 300px;
+    height: 300px;
+    margin: 0;
+    padding: 0;
+    border-radius: 20px;
+}
+#qr-shaded-region{
+    border-radius: 20px;
+}

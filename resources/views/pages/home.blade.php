@@ -73,13 +73,40 @@
     </h5>
 
     <div id="devices_container" class="container my-3">
-        <!-- When user adds a device, it appears here. -->
+        
+        @foreach($devices as $device)
+            <div class="container device-container my-3">
+                <div class="row">
+                    <div class="col-3">
+                        @if($device->status == 'idle')
+                            <img src="{{ asset('img/plants/icons/plant.png') }}" width="100%" alt="">
+                        @else
+                            <img src="{{ asset('img/plants/icons/plant_paired.png') }}" width="100%" alt="">
+                        @endif
+                    </div>
+                    <div class="col">
+                        <h5 class="mt-4">
+                            @if($device->status == 'active')
+                                <img src="{{ asset('img/plants/icons/active.png') }}" alt="" width="10px"> 
+                            @elseif($device->status == 'offline')
+                                <img src="{{ asset('img/plants/icons/inactive.png') }}" alt="" width="15px"> 
+                            @endif
+                            {{$device->serial_no}}
+                        </h5>
+                    </div>
+                    <div class="col-2 pt-3">
+                        <a href="" ><img src="{{ asset('img/plants/icons/trash.png') }}" width="100%" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+
         <center>
         <small>When user adds a device, it appears here.</small>
         </center>
     </div>
 
     <center>
-        <button id="btn_addDevice" class="btn btn-success my-5">+ Add device</button>
+        <button id="btn_addDevice" class="btn btn-success my-5" onclick="window.location.href='/user/device-scan'">+ Add device</button>
     </center>
 </div>

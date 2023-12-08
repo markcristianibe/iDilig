@@ -27,6 +27,7 @@ return new class extends Migration
             $table->integer('waterpump_status');
             $table->string('type');
             $table->string('status');
+            $table->string('mac_address');
             $table->timestamps();
         });
     }

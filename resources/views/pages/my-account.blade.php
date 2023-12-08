@@ -14,7 +14,7 @@
 <div id="body" class="container bg-m_green_light">
     <center>
         <img src="{{ asset('img/PLANTS_icon_bg.jpg') }}" alt="" class="user-avatar">
-        <h4>{{ auth()->user()->firstname }} {{ auth()->user()->lastname }} <a id="edit_btn" href="">🖊️</a></h4>
+        <h4>{{ auth()->user()->firstname }} {{ auth()->user()->lastname }} <a id="edit_btn" href="">⚙️</a></h4>
     </center>
     <hr>
     <h3>Account Links</h3>
