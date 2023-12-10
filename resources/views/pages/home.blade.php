@@ -95,10 +95,12 @@
                         </h5>
                     </div>
                     <div class="col-2 pt-3">
-                        <a href="" ><img src="{{ asset('img/plants/icons/trash.png') }}" width="100%" alt=""></a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#remove_device_modal"><img src="{{ asset('img/plants/icons/trash.png') }}" width="100%" alt=""></a>
                     </div>
                 </div>
             </div>
+            @include('modals.remove-device-modal', ['device_id' => $device->serial_no])
+            @include('modals.force-remove-device-modal', ['device_id' => $device->serial_no])
         @endforeach
 
         <center>

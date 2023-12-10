@@ -109,16 +109,16 @@
                 </div>
             </div>
             <br>
-            <i>👆🏾 Tap here for more info</i>
+            <i><img src="{{ asset('img/plants/icons/tap.png') }}" alt="" width="20"> Tap here for more info</i>
         </div>
     @endif
 
-    <div id="plant_activities" class="tile-container container mt-3">
+    <div class="tile-container container mt-3">
         <h4 class="text-m_green_dark mt-2">Activities & Notifications</h4>
         <hr>
         <div class="row mb-2">
             <div class="col-4">
-                <div class="tile container" style="background: #A4F3E0">
+                <div id="plant_activities" class="tile container" style="background: #A4F3E0">
                     <center>
                         <img src="{{ asset('img/plants/icons/activity.png') }}" alt="" class="tile-img">
                         <small class="text-light"><b>Activities</b></small>
@@ -126,7 +126,7 @@
                 </div>
             </div>
             <div class="col-4">
-                <div class="tile container" style="background: #C2F3A4">
+                <div id="plant_diagnosis" class="tile container" style="background: #C2F3A4">
                     <center>
                         <img src="{{ asset('img/plants/icons/diagnose.png') }}" alt="" class="tile-img">
                         <small class="text-light"><b>Diagnose</b></small>
@@ -150,7 +150,7 @@
         @if(count($device) != 0)
             <div class="row mb-2">
                 <div class="col-3">
-                    <div class="tile container" style="background: #ACFF85">
+                    <div id="show_devices" class="tile container" style="background: #ACFF85">
                         <center>
                             <img src="{{ asset('img/plants/icons/plant_paired.png') }}" alt="" class="tile-img">
                         </center>
@@ -162,17 +162,25 @@
                 <div class="col-3">
                     <div class="tile container" style="background: #FF4E27">
                         <center>
-                            <img src="{{ asset('img/plants/icons/trash.png') }}" alt="" class="tile-img">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#unpair_device_modal">
+                                <img src="{{ asset('img/plants/icons/trash.png') }}" alt="" class="tile-img">
+                            </a>
+                            @include('modals.unpair-device-modal')
                         </center>
                     </div>
                 </div>
             </div>
         @else
             <h5 class="text-center p-3">No Paired Device</h5>
+            <center>
+                <button id="btn_show_devices" class="btn btn-secondary mb-3">Show Available Devices</button>
+            </center>
         @endif
     </div>
 
     <button id="btn-remove-plant" class="btn btn-danger btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#remove_plant_modal">Remove from my Plants</button>
 </div>
+
+@include('pages.templates.my-plants.device-connection')
 
 @include('modals.remove-plant-modal')

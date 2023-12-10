@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('devices', function (Blueprint $table) {
             $table->string('serial_no')->unique()->id();
+            $table->string('device_name');
             $table->string('user_id');
             $table->string('plant_id');
             $table->float('light_intensity');

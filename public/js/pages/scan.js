@@ -1,4 +1,5 @@
-const plant_id_api_key = 'jWTQeulB89P9e3ZTJdd0mrCou0uAEkZtr7vC0hBrAfkFkRnddg';
+// const plant_id_api_key = 'jWTQeulB89P9e3ZTJdd0mrCou0uAEkZtr7vC0hBrAfkFkRnddg';
+const plant_id_api_key = 'inuMPoNUMNVJhlb7DZJ4TKmilufLRpA9TkzRclu9iHA8pTCTIH';
 const plant_id_api_url = 'https://plant.id/api/v3/identification';
 const trefle_api_key = 'fAbTGCCda1cuFC8ooIZ3qfLXzMlvkjH71UPjrDXZPv0';
 
@@ -43,7 +44,8 @@ $(document).ready(function () {
             }
         })
         .catch(error => {
-            console.error('Error identifying plant:', error);
+            alert('Error identifying plant:', error);
+            window.location.reload();
         });
     });
 
@@ -84,7 +86,7 @@ $(document).ready(function () {
                     label: plant_label
                 },
                 datatype: 'text',
-                success: function(){
+                success: function(data){
                     alert('Plant Added to My Plants');
                     window.location.href = "/my-plants";
                 }

@@ -11,8 +11,8 @@ $(document).ready(function () {
     $("#diagnose_tab").addClass("active");
 
     $("#file_diagnose_plant").on("change", function(){
-        // const apiKey = 'inuMPoNUMNVJhlb7DZJ4TKmilufLRpA9TkzRclu9iHA8pTCTIH';
-        const apiKey = 'jWTQeulB89P9e3ZTJdd0mrCou0uAEkZtr7vC0hBrAfkFkRnddg';
+        const apiKey = 'inuMPoNUMNVJhlb7DZJ4TKmilufLRpA9TkzRclu9iHA8pTCTIH';
+        // const apiKey = 'jWTQeulB89P9e3ZTJdd0mrCou0uAEkZtr7vC0hBrAfkFkRnddg';
         const apiUrl = 'https://plant.id/api/v3/identification';
         const imageFile = document.getElementById("file_diagnose_plant").files[0];
 
@@ -38,7 +38,7 @@ $(document).ready(function () {
         })
         .then(response => response.json())
         .then(result => {
-
+            console.log(result)
             $.ajax({
                 url: '/diagnose/diagnose-result',
                 type: 'GET',

@@ -59,7 +59,7 @@
         </div>
         @endforeach
 
-        <center>
+        <center class="mt-5">
             <small><i>No more plants to show</i></small>
         </center>
     </div>

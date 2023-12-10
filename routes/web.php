@@ -56,4 +56,20 @@ Route::get('/user/plants/{id}', [UserController::class, 'get_user_plant_info']);
 
 Route::get('/user/plant/monitoring', [UserController::class, 'get_device_params']);
 
+Route::get('/user/plant/activities', [UserController::class, 'get_user_plant_activities']);
+
+Route::get('/user/plant/diagnosis', [UserController::class, 'get_user_plant_diagnosis']);
+
+Route::get('/my-plant/diagnose/diagnose-result', [PlantDiagnosisController::class, 'get_user_plant_diagnosis']);
+
+Route::get('/user/diagnose-history', [UserController::class, 'get_diagnosis_result']);
+
 Route::get('/user/plants/remove/{id}', [UserController::class, 'remove_user_plant']);
+
+Route::get('/user/pair-device', [UserController::class, 'pair_user_device']);
+
+Route::get('/user/unpair-device', [UserController::class, 'unpair_user_device']);
+
+Route::get('/user/remove-device', [UserController::class, 'remove_device']);
+
+Route::get('/user/force-remove-device', [UserController::class, 'force_remove_device']);

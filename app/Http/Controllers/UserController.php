@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Device;
+use App\Models\PlantDiagnose;
 use App\Models\UserPlant;
+use App\Models\UserPlantActivity;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -35,6 +37,8 @@ class UserController extends Controller
         $userplant -> plant_name = $request->plant;
         $userplant -> label = $request->label;
         $userplant -> save();
+
+        $this->create_activity_log($userplant->id, 'Plant Added', $request->label);
     }
 
     public function search_user_plant(Request $request){
@@ -62,6 +66,8 @@ class UserController extends Controller
         UserPlant::where('plant_id', '=', $request->id)
                 ->where('user_id', '=', auth()->user()->id)->delete();
         
+        Device::where('plant_id', '=', $request->id)
+                ->update(['plant_id' => '', 'status' => 'idle']);
         return redirect('/my-plants');
     }
 
@@ -73,6 +79,7 @@ class UserController extends Controller
         if(count($devices) == 0){
             $user_device = new Device;
             $user_device -> serial_no = $serial;
+            $user_device -> device_name = $serial;
             $user_device -> user_id = auth()->user()->id;
             $user_device -> plant_id = '';
             $user_device -> light_intensity = 0;
@@ -83,6 +90,7 @@ class UserController extends Controller
             $user_device -> water_level_2 = 0;
             $user_device -> water_level_3 = 0;
             $user_device -> waterpump_status = 0;
+            $user_device -> mac_address = '';
             $user_device -> type = '';
             $user_device -> status = 'idle';
             $user_device -> save();
@@ -96,8 +104,85 @@ class UserController extends Controller
 
     public function get_device_params(Request $request){
         $plant_id = $request->plant_id;
-        
-        return view('pages.templates.my-plants.plant-monitoring');
 
+        $data = UserPlant::where('plant_id', '=', $plant_id)
+                    ->where('user_id', '=', auth()->user()->id)->get();
+
+        $device = Device::where('plant_id', '=', $plant_id)
+                    ->where('user_id', '=', auth()->user()->id)->get();
+
+        $jsonString = file_get_contents('plant-database-master/json/' . $data[0]->plant_name . '.json');
+        $plant_info = json_decode($jsonString, true);
+
+        return view('pages.templates.my-plants.plant-monitoring', ['data' => $data, 'device' => $device, 'plant_info' => $plant_info]);
+
+    }
+
+    public function get_user_plant_activities(Request $request){
+        $activities = UserPlantActivity::where('plant_id', '=', $request->plant_id)->get();
+
+        return view('pages.templates.my-plants.plant-activities', ['activities' => $activities]);
+    }
+
+    public function get_user_plant_diagnosis(Request $request){
+        $diagnosis = PlantDiagnose::where('plant_id', '=', $request->plant_id)->get();
+
+        return view('pages.templates.my-plants.plant-diagnosis', ['diagnoses' => $diagnosis]);
+    }
+
+    public function pair_user_device(Request $request){
+        $plant_id = $request->plant_id;
+        $device_id = $request->device_id;
+
+        Device::where('serial_no', '=', $device_id)
+        ->update(['plant_id' => $plant_id, 'status' => 'offline']);
+
+        $this->create_activity_log($plant_id, 'Paired Device to Plant', $device_id);
+    }
+
+    public function unpair_user_device(Request $request){
+        $plant_id = $request->plant_id;
+
+        $device = Device::where('plant_id', '=', $plant_id)->get();
+
+        Device::where('serial_no', '=', $device[0]->serial_no)
+        ->update(['plant_id' => '', 'status' => 'idle']);
+
+        $this->create_activity_log($plant_id, 'Unpaired Device to Plant', $device[0]->device_name);
+    }
+
+    public function remove_device(Request $request){
+        $device_id = $request->device_id;
+
+        $device = Device::where('serial_no', '=', $device_id)->get();
+
+        if($device[0]->plant_id != ''){
+            return 'device is paired';
+        }
+        else{
+            Device::where('serial_no', '=', $device_id)->delete();
+            return 'device deleted';
+        }
+    }
+
+    public function force_remove_device(Request $request){
+        $device_id = $request->device_id;
+        Device::where('serial_no', '=', $device_id)->delete();
+    }
+
+    public function get_diagnosis_result(Request $request){
+        $diagnosis_id = $request->id;
+        $plant_diagnosis = PlantDiagnose::where('id', '=', $diagnosis_id)->get();
+
+        $jsonData = json_decode($plant_diagnosis[0]->data);
+        return view('main', ['page' => 'diagnose-result', 'jsonData' => $jsonData]);
+    }
+
+    function create_activity_log($plant_id, $title, $remarks){
+        $userplant_activity = new UserPlantActivity;
+        $userplant_activity -> plant_id = $plant_id;
+        $userplant_activity -> title = $title;
+        $userplant_activity -> remarks = $remarks;
+        $userplant_activity -> save();
     }
 }

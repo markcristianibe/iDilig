@@ -66,4 +66,39 @@ $(document).ready(function () {
                 $("#txt_windSpeed").text(windSpeed + " km/h");
             });
     });
+
+    $(".btn_remove_device").click(function(){
+        $.ajax({
+            type: "get",
+            url: "/user/remove-device",
+            data: {
+                device_id: this.id
+            },
+            dataType: "text",
+            success: function (data) {
+                if(data == 'device deleted'){
+                    alert('Device Removed Successfully!')
+                    window.location.reload()
+                }
+                else{
+                    $("#force_remove_device_modal").modal('show');
+                }
+            }
+        });
+    })
+
+    $(".btn_force_remove_device").click(function(){
+        $.ajax({
+            type: "get",
+            url: "/user/force-remove-device",
+            data: {
+                device_id: this.id
+            },
+            dataType: "text",
+            success: function () {
+                alert('Device Removed Successfully!')
+                window.location.reload()
+            }
+        });
+    })
 });
